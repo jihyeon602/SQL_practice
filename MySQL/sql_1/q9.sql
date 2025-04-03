@@ -1,5 +1,14 @@
 -- borrow 테이블을 정의하세요.
-
+CREATE TABLE borrow(
+    customer_number VARCHAR(10) NOT NULL,
+    rental_time DATETIME NOT NULL, 
+    rental_status ENUM('대여', '반납') NOT NULL,
+    rental_location VARCHAR(20) NOT NULL,
+    kickboard_id VARCHAR(10) NOT NULL,
+    PRIMARY KEY (rental_time, customer_number),
+    FOREIGN KEY (customer_number) REFERENCES customer(customer_number),
+    FOREIGN KEY (kickboard_id) REFERENCES kickboard(id)
+);
 
 -- 정의한 테이블과 외래키 제약 조건을 확인하는 코드입니다. 아래 주석을 해제하여 결과를 확인하세요.
 -- SELECT * FROM information_schema.table_constraints WHERE CONSTRAINT_TYPE = 'FOREIGN KEY';

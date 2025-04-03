@@ -12,6 +12,8 @@ CREATE TABLE kickboard(
     CONSTRAINT member_birthday_check CHECK (member_birthday < '2000-01-01')
 );
 
+ALTER TABLE kickboard ADD CONSTRAINT id_primary_key PRIMARY KEY (id);
+
 -- id 속성의 Key가 PRI로 설정되는 것을 확인하세요. 아래 코드는 수정하면 안됩니다.
 DESC kickboard;
 

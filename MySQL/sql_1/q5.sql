@@ -1,13 +1,13 @@
 -- kickboard 테이블에 제약 조건을 정의하세요.
 CREATE TABLE kickboard(
-    member_id       VARCHAR(16),
-    member_name     VARCHAR(16),
-    member_birthday DATE,
-    id              VARCHAR(16),
-    brand           VARCHAR(16),   
-    rental_location VARCHAR(32),
-    rental_time     TIME, 
-    price           INT
+    member_id       VARCHAR(16) NOT NULL,
+    member_name     VARCHAR(16) NOT NULL,
+    member_birthday DATE CHECK (member_birthday < '2000-01-01'),
+    id              VARCHAR(16) NOT NULL UNIQUE,
+    brand           VARCHAR(16) NOT NULL,   
+    rental_location VARCHAR(32) NOT NULL,
+    rental_time     TIME CHECK (rental_time < '01:00:00'), 
+    price           INT DEFAULT 0
 );
 
 -- 제약 조건이 올바르게 설정되었는지 직접 데이터를 넣어보세요.

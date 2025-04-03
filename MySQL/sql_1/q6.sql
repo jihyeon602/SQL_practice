@@ -14,7 +14,13 @@ CREATE TABLE kickboard(
 );
 
 -- kickboard 테이블에 제약 조건을 추가 및 삭제하세요.
+-- 회원의 ID를 고유값으로 관리
+-- 대여 시간에 대한 제약 조건 제거
+-- 가격의 기본값을 1000으로 변경
 
+ALTER TABLE kickboard ADD CONSTRAINT member_id_id UNIQUE (member_id);
+ALTER TABLE kickboard DROP CONSTRAINT rental_time_check;
+ALTER TABLE kickboard ALTER price SET DEFAULT 1000;
 
 -- 제약 조건이 올바르게 설정되었는지 직접 데이터를 넣어보세요.
 -- INSERT INTO kickboard(member_id, member_name, member_birthday, id, brand, rental_location, rental_time, price)
