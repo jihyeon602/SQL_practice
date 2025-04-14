@@ -27,4 +27,5 @@ insert into sale values(11, 'umbrella', 5, 50000);
 --물건의 이름(name)과 물건 별 판매량(amount)의 합을 검색하세요. 
 --단 해당 물건의 총 판매 수익(revenue)의 합이 50000이상인 것만 검색해봅시다.
 
-SELECT name, SUM(amount) FROM sale GROUP BY name;
+SELECT name, SUM(amount) FROM sale GROUP BY name 
+HAVING SUM(revenue) >= 50000;

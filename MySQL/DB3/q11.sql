@@ -2,9 +2,11 @@
 DESC EMPLOYEE;
 
 -- 자신의 관리자의 급여보다 높거나 같은 급여를 가진 직원의 ID를 출력하는 쿼리를 작성해봅시다.
+-- 연관 서브쿼리
 
-
-SELECT employee_id FROM EMPLOYEE WHERE salaries >= (SELECT salaries FROM EMPLOYEE WHERE manager_id = )
+SELECT e1.employee_id FROM EMPLOYEE e1 JOIN EMPLOYEE e2 
+ON e1.manager_id = e2.employee_id WHERE e1.salary >= e2.salary 
+ORDER BY e1.employee_id;
 
 
 ------data

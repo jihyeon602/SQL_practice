@@ -4,3 +4,38 @@ DESC REQUEST_DTL;
 
 -- 요청상태가 FAILED인 요청ID를 구하고, 해당 요청들에 대한 요청상세 정보를 조회하는 쿼리를 작성해보세요.
 
+SELECT * FROM REQUEST_DTL r1 WHERE r1.request_id IN
+(SELECT r2.request_id FROM REQUEST r2 WHERE r2.request_status = 'FAILED')
+ORDER BY r1.request_dtl_id;
+
+
+
+
+--data
+CREATE TABLE REQUEST(
+  request_id		INT NOT NULL PRIMARY KEY,
+  request_status	VARCHAR(10) NOT NULL
+);
+
+INSERT INTO REQUEST VALUES
+(10001, 'SUCCESS'),
+(10002, 'FAILED'),
+(10003, 'SUCCESS'),
+(10004, 'SUCCESS'),
+(10005, 'FAILED'),
+(10006, 'FAILED');
+
+CREATE TABLE REQUEST_DTL(
+  request_dtl_id	INT			NOT NULL PRIMARY KEY,
+  request_id		INT			NOT NULL,
+  request_name		VARCHAR(50) NOT NULL,
+  request_content	VARCHAR(300)
+);
+
+INSERT INTO REQUEST_DTL VALUES
+(21548, 10001, 'FOR_TEST', NULL),
+(21567, 10002, 'GET', 'FOR GET'),
+(22211, 10003, 'POST', 'DATA INPUT'),
+(34527, 10004, 'DB', 'DATA INPUT'),
+(36788, 10005, 'HELLO', NULL),
+(40015, 10006, 'TEST', 'TEST_CONTENT');
