@@ -2,8 +2,8 @@
 
 SELECT DISTINCT emp_no,
 (SELECT AVG(salary) 
-FROM salaries
-WHERE salaries.emp_no = s.emp_no ) AS avg_salary FROM salaries AS s;
+FROM salaries s1
+WHERE s1.emp_no = s2.emp_no ) AS avg_salary FROM salaries s2;
 
 
 ---avg_salary는 별칭으로 설정
